@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url(a.jpg); 
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        background-color: rgba(231, 220, 220, 0.515); 
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 80%;
+        text-align: center;
+      }
+  
+      .container h1 {
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: grid;
+        gap: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .error-message {
+        color: red;
+        display: none;
+        margin-top: 5px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      function validateForm() {
+        var firstname = document.getElementById("firstname").value.trim();
+        var lastname = document.getElementById("lastname").value.trim();
+        var mobile = document.getElementById("mobile").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var company = document.getElementById("company").value.trim();
+        var registration = document.getElementById("registration").value.trim();
+        var password = document.getElementById("password").value.trim();
+
+        if (
+          firstname.trim() === "" ||
+          lastname.trim() === "" ||
+          mobile.trim() === "" ||
+          email.trim() === "" ||
+          company.trim() === "" ||
+          registration.trim() === "" ||
+          password.trim() === ""
+        ) {
+          document.getElementById("error-message").style.display = "block";
+          return false;
+        } else {
+          showNotification();
+        }
+      }
+
+      function redirectToMainPage() {
+        window.location.href = "index.html";
+      }
+
+      function showNotification() {
+        alert("Successfully Registered your account");
+        redirectToMainPage();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>&nbsp</h1>
+    <h1>Sign Up</h1>
+    <form action="signup_process.php" method="POST">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" required />
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" required />
+
+      <label for="mobile">Mobile:</label>
+      <input type="tel" id="mobile" name="mobile" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="company">Company Name:</label>
+      <input type="text" id="company" name="company" required />
+
+      <label for="registration">Registration Number:</label>
+      <input type="text" id="registration" name="registration" required />
+
+      <label for="password">Enter the Login Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <p id="error-message" class="error-message" style="display: none;">
+        Please fill in all fields.
+      </p>
+
+      <input type="submit" value="Sign Up" onclick="validateForm()" />
+    </form>
+    </div>
+  </body>
+</html>
